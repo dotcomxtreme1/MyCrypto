@@ -1,4 +1,5 @@
 import { defaultSettings, getCurrentDBConfig } from '@database';
+import { SignerState } from '@store';
 import { LSKeys } from '@types';
 
 import { deMarshallState, marshallState } from '../DataManager/utils';
@@ -18,8 +19,10 @@ export const emptyState = {
   [LSKeys.SETTINGS]: defaultSettings,
   [LSKeys.USER_ACTIONS]: [],
   [LSKeys.PROMO_POAPS]: { promos: {} } as PromoPoapsState,
-  [LSKeys.CONNECTIONS]: { wallets: {} } as ConnectionsState
+  [LSKeys.CONNECTIONS]: { wallets: {} } as ConnectionsState,
+  [LSKeys.SIGNER]: {} as SignerState
 };
+
 /**
  * @todo migrate to new store structure once redux-persist is in setup.
  * The initial state is the equivalent of `marshallState(getCurrentDBConfig().defaultValues)`
